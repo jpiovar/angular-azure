@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  clientId: '' // set your own
+  clientId: 'yourClientId', // set your own
+  tenantId: 'https://login.microsoftonline.com/'+'yourTenantId'
 };
 
 /*

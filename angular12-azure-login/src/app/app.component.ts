@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-common';
@@ -10,8 +11,11 @@ import { AuthenticationResult } from '@azure/msal-common';
 export class AppComponent implements OnInit {
   title = 'angular12-azure';
 
+  apiResponse: string = '';
+
   constructor(
     private msalService: MsalService,
+    private httpClient: HttpClient,
   ) {
 
   }
@@ -36,5 +40,11 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.msalService.logout();
+  }
+
+  callProfile() {
+    this.httpClient.get('https://graph.microsoft.com/v1.0/me').subscribe(res => {
+      this.apiResponse = JSON.stringify(res);
+    });
   }
 }

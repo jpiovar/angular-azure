@@ -11,3 +11,8 @@
   you are not loggedIn
 </div>
 <router-outlet></router-outlet>
+<div *ngIf="isLoggedIn()">
+  <button (click)="callProfile()">GET PROFILE</button>
+  <br/>
+  GET PROFILE: {{apiResponse}}
+</div>
