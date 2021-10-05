@@ -10,12 +10,18 @@ import { AppComponent } from './app.component';
 import { PublicPageComponent } from './public-page/public-page.component';
 import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
 
+const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
+
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: environment.clientId,
       authority: environment.tenantId,
       redirectUri: 'http://localhost:4200'
+    },
+    cache: {
+      cacheLocation: 'localStorage',
+      storeAuthStateInCookie: isIE,
     }
   });
 }
