@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  clientId: '', // set your own
+  tenantId: '',
+  cloudId: 'https://login.microsoftonline.com',
+  graphId: 'https://graph.microsoft.com',
+  redirectUrl: 'http://localhost:4200'
 };
 
 /*
